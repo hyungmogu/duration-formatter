@@ -1,3 +1,5 @@
+'use strict';
+
 function formatDuration(total_seconds) {
     let answer = "";
 
