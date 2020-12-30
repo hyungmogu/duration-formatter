@@ -1,4 +1,41 @@
-function formatDuration(seconds) {
+// Detailed example
+// 7262
+// [2,1,2,0,0]
+// ["2 hours", "1 minute", "2 seconds"]
+// "2 hours, 1 minute and 2 seconds"
+
+// set up list called 'container' where
+//  - container[0] == 'seconds'
+//  - container[1] == 'minutes'
+//  - container[2] == 'hours'
+//  - container[3] == 'days'
+//  - container[4] == 'years'
+
+// [0,0,0,0,0]
+
+// if total_seconds == 0, then return now
+
+// if total_seconds != 0, then, split total_seconds into seconds, minutes, hours, days, years
+// Calculate number of years, and store in container[4]
+// Calculate number of days, and store in container[3]
+// Calculate number of hours, and store in container[2]
+// Calculate number of minutes, and store in container[1]
+// Calculate number of seconds, and store in container[0]
+
+// For each element in 'container', convert int to readable format and push result to another container called 'answer_tmp'
+
+// Join strings in 'answer_tmp' and store in variable called 'answer'
+//  if answer_tmp.length == 1, set answer = answer_tmp[0]
+//  if answer_tmp.length == 2, set answer = `${answer_tmp[1]} and ${answer_tmp[2]}`
+//  if answer_tmp.length > 2, split to two one containing the last two elements and the other containing the rest
+//      for the container containing the remaining elements, join with ", "
+//      for the container containing last two elements, join with " and "
+//      combine above and store in 'answer'
+
+// return 'answer'
+
+
+function formatDuration(total_seconds) {
 
     return answer;
 }
