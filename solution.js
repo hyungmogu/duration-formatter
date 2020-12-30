@@ -1,6 +1,31 @@
 function formatDuration(seconds) {
+
     return answer;
 }
 
-console.log(formatDuration(62))    // returns "1 minute and 2 seconds"
-console.log(formatDuration(3662))  // returns "1 hour, 1 minute and 2 seconds"
+console.log(formatDuration(0))          // returns "Now"
+console.log(formatDuration(1))          // returns "1 second"
+console.log(formatDuration(2))          // returns "2 seconds"
+console.log(formatDuration(40))         // returns "40 seconds"
+console.log(formatDuration(60))         // returns "1 minute"
+console.log(formatDuration(61))         // returns "1 minute and 1 second"
+console.log(formatDuration(62))         // returns "1 minute and 2 seconds"
+console.log(formatDuration(120))        // returns "2 minutes"
+console.log(formatDuration(121))        // returns "2 minutes and 1 second"
+console.log(formatDuration(122))        // returns "2 minutes and 2 seconds"
+console.log(formatDuration(3600))       // returns "1 hour"
+console.log(formatDuration(3601))       // returns "1 hour and 1 second"
+console.log(formatDuration(3602))       // returns "1 hour and 2 seconds"
+console.log(formatDuration(3660))       // returns "1 hour and 1 minute"
+console.log(formatDuration(3661))       // returns "1 hour, 1 minute and 1 second"
+console.log(formatDuration(3662))       // returns "1 hour, 1 minute and 2 seconds"
+console.log(formatDuration(7200))       // returns "1 hour, 1 minute and 2 seconds"
+console.log(formatDuration(7200))       // returns "2 hours"
+console.log(formatDuration(7201))       // returns "2 hours and 1 second"
+console.log(formatDuration(7202))       // returns "2 hours and 2 seconds"
+console.log(formatDuration(7260))       // returns "2 hours and 1 minute"
+console.log(formatDuration(7261))       // returns "2 hours, 1 minute and 1 second"
+console.log(formatDuration(7262))       // returns "2 hours, 1 minute and 2 seconds"
+console.log(formatDuration(7262))       // returns "2 hours, 1 minute and 2 seconds"
+console.log(formatDuration(31536000))   // returns "1 year"
+console.log(formatDuration(63072000))   // returns "2 years"
