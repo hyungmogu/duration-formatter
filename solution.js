@@ -1,65 +1,29 @@
-// Detailed example and Pseudocode
-// 7262
-// [2,1,2,0,0]
-// ["2 hours", "1 minute", "2 seconds"]
-// "2 hours, 1 minute and 2 seconds"
-
-// set up list called 'container' where
-//  - container[0] == 'years'
-//  - container[1] == 'days'
-//  - container[2] == 'hours'
-//  - container[3] == 'minutes'
-//  - container[4] == 'seconds'
-
-// [0,0,0,0,0]
-
-// if total_seconds == 0, then return now
-
-// if total_seconds != 0, then, split total_seconds into seconds, minutes, hours, days, years
-// Calculate number of years, and store in container[4]
-// Calculate number of days, and store in container[3]
-// Calculate number of hours, and store in container[2]
-// Calculate number of minutes, and store in container[1]
-// Calculate number of seconds, and store in container[0]
-
-// For each element in 'container', convert int to readable format and push result to another container called 'answer_tmp'
-
-// Join strings in 'answer_tmp' and store in variable called 'answer'
-//  if answer_tmp.length == 1, set answer = answer_tmp[0]
-//  if answer_tmp.length == 2, set answer = `${answer_tmp[0]} and ${answer_tmp[1]}`
-//  if answer_tmp.length > 2, split container to two one containing the last element and the other containing the rest
-//      for the container containing the rest, join with ", "
-//      for the container containing the last element, join above with " and "
-//      combine the two and store in 'answer'
-
-// return 'answer'
-
-
 function formatDuration(total_seconds) {
     let answer = "";
 
-    // set up list called 'container' where
+    // Set up list called 'container' where
     //  - container[0] == 'years'
     //  - container[1] == 'days'
     //  - container[2] == 'hours'
     //  - container[3] == 'minutes'
     //  - container[4] == 'seconds'
-
     let container = [0,0,0,0,0];
 
-    // if total_seconds == 0, then return now
+    // If total_seconds == 0, then return now
     if (total_seconds == 0) {
         return "Now";
     }
 
-    // if total_seconds != 0, then, split total_seconds into seconds, minutes, hours, days, years
-    // Calculate number of years, and store in container[4]
+    // If total_seconds != 0, then, split total_seconds into years, days,
+    // hours, minutes and seconds
+
+    // Calculate number of years, and store in container[0]
     let YEAR_IN_SECONDS = 31536000;
     let number_of_years = Math.floor(total_seconds / YEAR_IN_SECONDS);
     container[0] = number_of_years;
     total_seconds = total_seconds - (YEAR_IN_SECONDS * number_of_years);
 
-    // Calculate number of days, and store in container[3]
+    // Calculate number of days, and store in container[1]
     let DAY_IN_SECONDS = 86400;
     let number_of_days = Math.floor(total_seconds / DAY_IN_SECONDS);
     container[1] = number_of_days;
@@ -71,16 +35,17 @@ function formatDuration(total_seconds) {
     container[2] = number_of_hours;
     total_seconds = total_seconds - (HOUR_IN_SECONDS * number_of_hours);
 
-    // Calculate number of minutes, and store in container[1]
+    // Calculate number of minutes, and store in container[3]
     let MINUTE_IN_SECONDS = 60;
     let number_of_minutes = Math.floor(total_seconds / MINUTE_IN_SECONDS);
     container[3] = number_of_minutes;
     total_seconds = total_seconds - (MINUTE_IN_SECONDS * number_of_minutes);
 
-    // Calculate number of seconds, and store in container[0]
+    // Calculate number of seconds, and store in container[4]
     container[4] = total_seconds;
 
-    // For each element in 'container', convert int to readable format and push result to another container called 'answer_tmp'
+    // For each element in 'container', convert from integer to readable
+    // format and push result to another container called 'answer_tmp'
     let answer_tmp = [];
     for (let i = 0; i < container.length; i++) {
         if (container[i] == 0) {
@@ -104,13 +69,7 @@ function formatDuration(total_seconds) {
         answer_tmp.push(e);
     }
 
-    // Join strings in 'answer_tmp' and store in variable called 'answer'
-    //  if answer_tmp.length == 1, set answer = answer_tmp[0]
-    //  if answer_tmp.length == 2, set answer = `${answer_tmp[0]} and ${answer_tmp[1]}`
-    //  if answer_tmp.length > 2, split container to two one containing the last element and the other containing the rest
-    //      for the container containing the rest, join with ", "
-    //      for the container containing the last element, join above with " and "
-    //      combine the two and store in 'answer'
+    // Join strings in 'answer_tmp' and return answer
     if (answer_tmp.length == 1) {
         return `${answer_tmp[0]}`;
     }
@@ -119,8 +78,8 @@ function formatDuration(total_seconds) {
         return `${answer_tmp[0]} and ${answer_tmp[1]}`;
     }
 
-    // return 'answer'
-    answer = `${answer_tmp.slice(0, answer_tmp.length - 1).join(", ")} and ${answer_tmp[answer_tmp.length - 1]}`;
+    answer = (`${answer_tmp.slice(0, answer_tmp.length - 1).join(", ")} and ` +
+              `${answer_tmp[answer_tmp.length - 1]}`);
 
     return answer;
 }
